@@ -1,13 +1,24 @@
+import 'dart:io';
+
 void main() {
-  String frase = "O Palmeiras é o time da virada";
+
+  print("Digite uma frase:");
+  String frase = stdin.readLineSync()!;
+
+  List<String> palavras = frase.split(" ");
+
   Map<String, int> estatisticas = {};
 
-  frase.toLowerCase().split(' ').forEach((palavra) {
-    estatisticas[palavra] = (estatisticas[palavra] ?? 0) + 1;
-  });
+  for (String palavra in palavras){
+    if (estatisticas.containsKey(palavra)){
+      estatisticas[palavra] = estatisticas[palavra]! + 1;
+    } else {
+      estatisticas[palavra] = 1;
+    }
+  }
 
-  print('Estatísticas de palavras:');
-  estatisticas.forEach((palavra, frequencia) {
-    print('$palavra: $frequencia');
-  });
+  print("Estatísticas de palavras:");
+  for (String palavra in estatisticas.keys){
+    print("$palavra: ${estatisticas[palavra]}");
+  }
 }

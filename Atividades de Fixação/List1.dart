@@ -1,13 +1,17 @@
+import 'dart:io';
 void main() {
-  List<int> numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  
-  List<int> numerosPares = [];
-  
+  List<int> numeros = [];
+
+  for (int i = 0; i < 11; i++) {
+    stdout.write('Digite o número ${i}: ');
+    int numero = int.parse(stdin.readLineSync()!);
+    numeros.add(numero);
+  }
+
+  print('Números pares:');
   for (int numero in numeros) {
     if (numero % 2 == 0) {
-      numerosPares.add(numero);
+      print(numero);
     }
   }
-  
-  print("Números pares na lista: $numerosPares");
 }
